@@ -1,8 +1,6 @@
 -- ==============================================================================
 -- 👑 PROJECT JINXKING: THE OFFICIAL PREMIUM MULTI-PLATFORM EXPLOIT HUB v3.5
 -- ==============================================================================
--- 1:1 CLONED TOXO V20 PRESTIGE DESIGN MATRIX | INTEGRATED FULL SCRATCH VISUAL STUDIO
--- Coded with Advanced Nesting Input Nodes, Variables, Lists & Custom Pink Blocks
 
 local Players = game:GetService("Players")
 local UIS = game:GetService("UserInputService")
@@ -13,7 +11,7 @@ local Lighting = game:GetService("Lighting")
 local Player = Players.LocalPlayer
 local PlayerGui = Player:WaitForChild("PlayerGui")
 
--- Global Configurations Memory Cache
+-- Global Configurations Matrix
 getgenv().JinxKingConfig = {
     AdminDetectActive = false,
     AntiAfkActive = true,
@@ -23,71 +21,156 @@ getgenv().JinxKingConfig = {
     LightAngle = 120
 }
 
--- Cleanup Old Frameworks
+-- Cleanup Old Installs
 for _, gui in ipairs(PlayerGui:GetChildren()) do
     if gui.Name == "JinxKingHub" then gui:Destroy() end
 end
 
--- UI Engine Utilities
-local function Create(class, props, parent)
-    local object = Instance.new(class)
-    for key, value in pairs(props) do object[key] = value end
-    object.Parent = parent
-    return object
-end
+-- ==============================================================================
+-- 🛡️ CORE RUNTIME BACKGROUND EXPLOIT ENGINE
+-- ==============================================================================
+task.spawn(function()
+    while task.wait(2) do
+        if getgenv().JinxKingConfig.AdminDetectActive then
+            pcall(function()
+                for _, p in pairs(Players:GetPlayers()) do
+                    if p.Name:lower():find("admin") or p.Name:lower():find("mod") then
+                        Player:Kick("[JinxKing Safeguard] Admin or Moderator presence detected! Disconnected safely.")
+                    end
+                end
+            end)
+        end
+    end
+end)
 
-local function Corner(parent, radius)
-    Create("UICorner", { CornerRadius = UDim.new(0, radius) }, parent)
-end
+pcall(function()
+    Player.Idled:Connect(function()
+        if getgenv().JinxKingConfig.AntiAfkActive then
+            game:GetService("VirtualUser"):Button2Down(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
+            task.wait(1)
+            game:GetService("VirtualUser"):Button2Up(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
+        end
+    end)
+end)
 
-local function Border(parent, color)
-    Create("UIStroke", { Color = color or Color3.fromRGB(45, 47, 55), Thickness = 1 }, parent)
-end
-
-local function Tween(object, duration, properties)
-    local animation = TweenService:Create(object, TweenInfo.new(duration, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), properties)
-    animation:Play()
-    return animation
-end
-
--- Screen Optimization Gui
-local Screen = Create("ScreenGui", { Name = "JinxKingHub", ResetOnSpawn = false, IgnoreGuiInset = true }, PlayerGui)
-local Scale = Create("UIScale", { Scale = 1 }, Screen)
-local function UpdateScale()
-    local camera = workspace.CurrentCamera
-    if not camera then return end
-    Scale.Scale = math.clamp(math.min(camera.ViewportSize.X / 850, camera.ViewportSize.Y / 570), 0.55, 1)
-end
-UpdateScale()
-workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(UpdateScale)
+task.spawn(function()
+    while task.wait(1) do
+        if getgenv().JinxKingConfig.CustomPlateText ~= "" then
+            pcall(function()
+                for _, vehicle in pairs(workspace:GetDescendants()) do
+                    if vehicle.Name:lower():find("car") or vehicle.Name:lower():find("vehicle") then
+                        local plate = vehicle:FindFirstChild("LicensePlate", true) or vehicle:FindFirstChild("Nummernschild", true)
+                        if plate then
+                            local textLabel = plate:FindFirstChildOfClass("TextLabel") or plate:FindFirstChildOfClass("TextBox")
+                            if textLabel then textLabel.Text = getgenv().JinxKingConfig.CustomPlateText textLabel.TextScaled = true end
+                        end
+                    end
+                end
+                local jXg = game:GetService("ReplicatedStorage"):WaitForChild("jXg", 2)
+                if jXg then
+                    local remote = jXg:WaitForChild("96fe0154-8895-4aad-bb55-27adea18d2da", 2)
+                    if remote and remote:IsA("RemoteEvent") then
+                        remote:FireServer(unpack({0, getgenv().JinxKingConfig.CustomPlateText, "", ""}))
+                    end
+                end
+            end)
+        end
+    end
+end)
 
 -- ==============================================================================
--- 🟣 THE MAIN APPLICATION WINDOW (Toxo Base Frame)
+-- 🎨 GRAPHICAL ENGINE GENERATOR (TOXO V20 LOOK & FEEL)
 -- ==============================================================================
-local Main = Create("Frame", { Name = "MainWindow", Size = UDim2.fromOffset(580, 380), Position = UDim2.new(0.5, -290, 0.5, -190), BackgroundColor3 = Color3.fromRGB(15, 16, 20), BorderSizePixel = 0, ClipsDescendants = true, Visible = true }, Screen)
-Corner(Main, 10); Border(Main)
+local Screen = Instance.new("ScreenGui", PlayerGui)
+Screen.Name = "JinxKingHub"
+Screen.ResetOnSpawn = false
+Screen.IgnoreGuiInset = true
 
-local Header = Create("Frame", Main) Header.Size = UDim2.new(1, 0, 0, 42) Header.BackgroundColor3 = Color3.fromRGB(22, 23, 28) Header.BorderSizePixel = 0
-local HeaderDrag = Create("TextButton", Header) HeaderDrag.Size = UDim2.new(1, -85, 1, 0) HeaderDrag.BackgroundTransparency = 1 HeaderDrag.Text = ""
+local Main = Instance.new("Frame", Screen)
+Main.Name = "MainWindow"
+Main.Size = UDim2.fromOffset(580, 380)
+Main.Position = UDim2.new(0.5, -290, 0.5, -190)
+Main.BackgroundColor3 = Color3.fromRGB(15, 16, 20)
+Main.BorderSizePixel = 0
+Instance.new("UICorner", Main).CornerRadius = UDim.new(0, 10)
+local mainStroke = Instance.new("UIStroke", Main)
+mainStroke.Color = Color3.fromRGB(45, 47, 55)
 
-local Title = Create("TextLabel", HeaderDrag)
-Title.Text = "| JinxKing Hub v3.5 | Emergency Hamburg" Title.Position = UDim2.fromOffset(14, 0) Title.Size = UDim2.new(1, -20, 1, 0) Title.TextColor3 = Color3.fromRGB(245, 246, 250) Title.TextSize = 11 Title.Font = Enum.Font.RobotoMono Title.BackgroundTransparency = 1 Title.TextXAlignment = Enum.TextXAlignment.Left
+-- Header Area
+local Header = Instance.new("Frame", Main)
+Header.Size = UDim2.new(1, 0, 0, 42)
+Header.BackgroundColor3 = Color3.fromRGB(22, 23, 28)
+Header.BorderSizePixel = 0
 
-local Controls = Create("Frame", Header) Controls.Position = UDim2.new(1, -74, 0, 7) Controls.Size = UDim2.fromOffset(66, 28) Controls.BackgroundTransparency = 1
-Create("UIListLayout", { FillDirection = Enum.FillDirection.Horizontal, HorizontalAlignment = Enum.HorizontalAlignment.Right, Padding = UDim.new(0, 5) }, Controls)
+local HeaderDrag = Instance.new("TextButton", Header)
+HeaderDrag.Size = UDim2.new(1, -85, 1, 0)
+HeaderDrag.BackgroundTransparency = 1
+HeaderDrag.Text = ""
 
--- Minimized Strip Controller
-local Strip = Create("Frame", Screen) Strip.Name = "JinxKingStrip" Strip.Size = UDim2.fromOffset(460, 42) Strip.Position = UDim2.new(0.5, -230, 0.2, 0) Strip.BackgroundColor3 = Color3.fromRGB(15, 16, 20) Strip.Visible = false
-Corner(Strip, 8); Border(Strip)
-local StripDrag = Create("TextButton", Strip) StripDrag.Size = UDim2.new(1, -80, 1, 0) StripDrag.BackgroundTransparency = 1 StripDrag.Text = ""
-local StripTitle = Create("TextLabel", StripDrag) StripTitle.Text = "| JinxKing Hub v3.5 | Minimiert" StripTitle.Position = UDim2.fromOffset(14, 0) StripTitle.Size = UDim2.new(1, -20, 1, 0) StripTitle.TextColor3 = Color3.fromRGB(245, 246, 250) StripTitle.TextSize = 12 StripTitle.Font = Enum.Font.RobotoMono Title.BackgroundTransparency = 1
-local StripControls = Create("Frame", Strip) StripControls.Position = UDim2.new(1, -74, 0, 7) StripControls.Size = UDim2.fromOffset(66, 28) StripControls.BackgroundTransparency = 1
-Create("UIListLayout", { FillDirection = Enum.FillDirection.Horizontal, HorizontalAlignment = Enum.HorizontalAlignment.Right, Padding = UDim.new(0, 5) }, StripControls)
+local Title = Instance.new("TextLabel", HeaderDrag)
+Title.Text = "| JinxKing Hub v3.5 | Emergency Hamburg"
+Title.Position = UDim2.fromOffset(14, 0)
+Title.Size = UDim2.new(1, -20, 1, 0)
+Title.TextColor3 = Color3.fromRGB(245, 246, 250)
+Title.TextSize = 11
+Title.Font = Enum.Font.RobotoMono
+Title.BackgroundTransparency = 1
+Title.TextXAlignment = Enum.TextXAlignment.Left
 
+-- Controls Window Right
+local Controls = Instance.new("Frame", Header)
+Controls.Position = UDim2.new(1, -74, 0, 7)
+Controls.Size = UDim2.fromOffset(66, 28)
+Controls.BackgroundTransparency = 1
+
+local listLayout = Instance.new("UIListLayout", Controls)
+listLayout.FillDirection = Enum.FillDirection.Horizontal
+listLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
+listLayout.Padding = UDim.new(0, 5)
+
+-- Minimierter Streifen Frame
+local Strip = Instance.new("Frame", Screen)
+Strip.Name = "JinxKingStrip"
+Strip.Size = UDim2.fromOffset(460, 42)
+Strip.Position = UDim2.new(0.5, -230, 0.2, 0)
+Strip.BackgroundColor3 = Color3.fromRGB(15, 16, 20)
+Strip.BorderSizePixel = 0
+Strip.Visible = false
+Instance.new("UICorner", Strip).CornerRadius = UDim.new(0, 8)
+local stripStroke = Instance.new("UIStroke", Strip)
+stripStroke.Color = Color3.fromRGB(45, 47, 55)
+
+local StripDrag = Instance.new("TextButton", Strip)
+StripDrag.Size = UDim2.new(1, -80, 1, 0)
+StripDrag.BackgroundTransparency = 1
+StripDrag.Text = ""
+
+local StripTitle = Instance.new("TextLabel", StripDrag)
+StripTitle.Text = "| JinxKing Hub v3.5 | Minimiert"
+StripTitle.Position = UDim2.fromOffset(14, 0)
+StripTitle.Size = UDim2.new(1, -20, 1, 0)
+StripTitle.TextColor3 = Color3.fromRGB(245, 246, 250)
+StripTitle.TextSize = 12
+StripTitle.Font = Enum.Font.RobotoMono
+StripTitle.BackgroundTransparency = 1
+StripTitle.TextXAlignment = Enum.TextXAlignment.Left
+
+local StripControls = Instance.new("Frame", Strip)
+StripControls.Position = UDim2.new(1, -74, 0, 7)
+StripControls.Size = UDim2.fromOffset(66, 28)
+StripControls.BackgroundTransparency = 1
+local sLayout = Instance.new("UIListLayout", StripControls)
+sLayout.FillDirection = Enum.FillDirection.Horizontal
+sLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
+sLayout.Padding = UDim.new(0, 5)
+
+-- Draggable Logic
 local function MakeDraggable(frame, handle)
     local dragging, dragInput, dragStart, startPosition
     handle.InputBegan:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then dragging = true dragStart = input.Position startPosition = frame.Position dragInput = input end
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            dragging = true dragStart = input.Position startPosition = frame.Position dragInput = input
+        end
     end)
     UIS.InputChanged:Connect(function(input)
         if not dragging then return end
@@ -98,46 +181,112 @@ local function MakeDraggable(frame, handle)
     end)
     UIS.InputEnded:Connect(function(input) if input == dragInput or input.UserInputType == Enum.UserInputType.MouseButton1 then dragging = false dragInput = nil end end)
 end
-MakeDraggable(Main, HeaderDrag); MakeDraggable(Strip, StripDrag)
+MakeDraggable(Main, HeaderDrag)
+MakeDraggable(Strip, StripDrag)
 
+-- Button Builder function
 local function MakeControl(parent, symbol, callback)
-    local f = Create("Frame", { Size = UDim2.fromOffset(24, 24), BackgroundColor3 = Color3.fromRGB(28, 29, 35) }, parent) Corner(f, 4); Border(f)
-    local btn = Create("TextButton", { Size = UDim2.new(1, 0, 1, 0), BackgroundTransparency = 1, Text = symbol, TextColor3 = Color3.fromRGB(245, 246, 250), TextSize = 11, Font = Enum.Font.RobotoMono }, f)
+    local f = Instance.new("Frame", parent)
+    f.Size = UDim2.fromOffset(24, 24)
+    f.BackgroundColor3 = Color3.fromRGB(28, 29, 35)
+    Instance.new("UICorner", f).CornerRadius = UDim.new(0, 4)
+    local s = Instance.new("UIStroke", f) s.Color = Color3.fromRGB(45, 47, 55)
+
+    local btn = Instance.new("TextButton", f)
+    btn.Size = UDim2.new(1, 0, 1, 0)
+    btn.BackgroundTransparency = 1
+    btn.Text = symbol
+    btn.TextColor3 = Color3.fromRGB(245, 246, 250)
+    btn.TextSize = 11
+    btn.Font = Enum.Font.RobotoMono
     btn.MouseButton1Click:Connect(callback)
 end
+
 MakeControl(Controls, "—", function() Main.Visible = false Strip.Position = Main.Position Strip.Visible = true end)
 MakeControl(Controls, "×", function() Screen:Destroy() end)
 MakeControl(StripControls, "+", function() Strip.Visible = false Main.Position = Strip.Position Main.Visible = true end)
 MakeControl(StripControls, "×", function() Screen:Destroy() end)
 
--- Sidebar Assembly
-local Sidebar = Create("Frame", { Name = "Sidebar", Position = UDim2.fromOffset(0, 42), Size = UDim2.new(0, 160, 1, -42), BackgroundColor3 = Color3.fromRGB(18, 19, 23), BorderSizePixel = 0 }, Main)
-local Navigation = Create("ScrollingFrame", { Name = "Navigation", Position = UDim2.fromOffset(6, 6), Size = UDim2.new(1, -12, 1, -125), BackgroundTransparency = 1, BorderSizePixel = 0, ScrollBarThickness = 2, AutomaticCanvasSize = Enum.AutomaticSize.Y }, Sidebar)
-Create("UIListLayout", { Padding = UDim.new(0, 3), SortOrder = Enum.SortOrder.LayoutOrder }, Navigation)
+-- Sidebar Layout
+local Sidebar = Instance.new("Frame", Main)
+Sidebar.Position = UDim2.fromOffset(0, 42)
+Sidebar.Size = UDim2.new(0, 160, 1, -42)
+Sidebar.BackgroundColor3 = Color3.fromRGB(18, 19, 23)
+Sidebar.BorderSizePixel = 0
 
-local Content = Create("Frame", { Name = "PageContainer", Position = UDim2.fromOffset(160, 42), Size = UDim2.new(1, -160, 1, -42), BackgroundColor3 = Color3.fromRGB(12, 12, 14), BorderSizePixel = 0 }, Main) Corner(Content, 6)
+local Navigation = Instance.new("ScrollingFrame", Sidebar)
+Navigation.Position = UDim2.fromOffset(6, 6)
+Navigation.Size = UDim2.new(1, -12, 1, -68)
+Navigation.BackgroundTransparency = 1
+Navigation.BorderSizePixel = 0
+Navigation.ScrollBarThickness = 2
+Navigation.ScrollBarImageColor3 = Color3.fromRGB(0, 140, 255)
+Navigation.AutomaticCanvasSize = Enum.AutomaticSize.Y
+Navigation.CanvasSize = UDim2.new(0, 0, 0, 0)
+local navLayout = Instance.new("UIListLayout", Navigation)
+navLayout.Padding = UDim.new(0, 3)
+
+local Content = Instance.new("Frame", Main)
+Content.Position = UDim2.fromOffset(160, 42)
+Content.Size = UDim2.new(1, -160, 1, -42)
+Content.BackgroundColor3 = Color3.fromRGB(12, 12, 14)
+Content.BorderSizePixel = 0
+Instance.new("UICorner", Content).CornerRadius = UDim.new(0, 6)
 
 -- ==============================================================================
 -- 🪐 GIGANTIC SCREEN-FILLING VISUAL SCRATCH STUDIO FRAMEWORK
 -- ==============================================================================
-local Studio = Create("Frame", { Name = "ScratchStudio", Size = UDim2.new(1, 0, 1, 0), BackgroundColor3 = Color3.fromRGB(12, 13, 16), BorderSizePixel = 0, Visible = false }, Screen)
-local StudioHeader = Create("Frame", { Size = UDim2.new(1, 0, 0, 45), BackgroundColor3 = Color3.fromRGB(20, 21, 25), BorderSizePixel = 0 }, Studio)
-local StudioTitle = Create("TextLabel", { Text = "  | JinxKing Block Engine Studio v3.5 [Scratch Mode]", Size = UDim2.new(0.7, 0, 1, 0), TextColor3 = Color3.fromRGB(240, 240, 245), TextSize = 13, Font = Enum.Font.RobotoMono, BackgroundTransparency = 1, TextXAlignment = Enum.TextXAlignment.Left }, StudioHeader)
-
-local StudioCloseBox = Create("Frame", { Size = UDim2.fromOffset(28, 28), Position = UDim2.new(1, -40, 0, 8), BackgroundColor3 = Color3.fromRGB(35, 25, 25) }, StudioHeader) Corner(StudioCloseBox, 4); Border(StudioCloseBox, Color3.fromRGB(235, 60, 60))
-local StudioCloseBtn = Create("TextButton", { Size = UDim2.new(1, 0, 1, 0), BackgroundTransparency = 1, Text = "×", TextColor3 = Color3.fromRGB(235, 60, 60), TextSize = 16, Font = Enum.Font.RobotoMono }, StudioCloseBox)
-
-local StudioSidebar = Create("ScrollingFrame", { Position = UDim2.fromOffset(0, 45), Size = UDim2.new(0, 180, 1, -45), BackgroundColor3 = Color3.fromRGB(18, 19, 22), ScrollBarThickness = 2, AutomaticCanvasSize = Enum.AutomaticSize.Y }, Studio) Create("UIListLayout", { Padding = UDim.new(0, 4) }, StudioSidebar)
-local Canvas = Create("ScrollingFrame", { Position = UDim2.fromOffset(180, 45), Size = UDim2.new(1, -180, 1, -45), BackgroundColor3 = Color3.fromRGB(9, 10, 12), CanvasSize = UDim2.new(3, 0, 3, 0), ScrollBarThickness = 4 }, Studio)
-
+local Studio = Instance.new("Frame", Screen)
+Studio.Name = "ScratchStudio"
+Studio.Size = UDim2.new(1, 0, 1, 0)
+Studio.BackgroundColor3 = Color3.fromRGB(12, 13, 16)
+Studio.BorderSizePixel = 0
+Studio.Visible = false
+local StudioHeader = Instance.new("Frame", Studio)
+StudioHeader.Size = UDim2.new(1, 0, 0, 45)
+StudioHeader.BackgroundColor3 = Color3.fromRGB(20, 21, 25)
+StudioHeader.BorderSizePixel = 0
+local StudioTitle = Instance.new("TextLabel", StudioHeader)
+StudioTitle.Text = "  | JinxKing Block Engine Studio v3.5 [Scratch Mode]"
+StudioTitle.Size = UDim2.new(0.7, 0, 1, 0)
+StudioTitle.TextColor3 = Color3.fromRGB(240, 240, 245)
+StudioTitle.TextSize = 13
+StudioTitle.Font = Enum.Font.RobotoMono
+StudioTitle.BackgroundTransparency = 1
+StudioTitle.TextXAlignment = Enum.TextXAlignment.Left
+local StudioCloseBox = Instance.new("Frame", StudioHeader)
+StudioCloseBox.Size = UDim2.fromOffset(28, 28)
+StudioCloseBox.Position = UDim2.new(1, -40, 0, 8)
+StudioCloseBox.BackgroundColor3 = Color3.fromRGB(35, 25, 25)
+Instance.new("UICorner", StudioCloseBox).CornerRadius = UDim.new(0, 4)
+local scStr = Instance.new("UIStroke", StudioCloseBox)
+scStr.Color = Color3.fromRGB(235, 60, 60)
+local StudioCloseBtn = Instance.new("TextButton", StudioCloseBox)
+StudioCloseBtn.Size = UDim2.new(1, 0, 1, 0)
+StudioCloseBtn.BackgroundTransparency = 1
+StudioCloseBtn.Text = "×"
+StudioCloseBtn.TextColor3 = Color3.fromRGB(235, 60, 60)
+StudioCloseBtn.TextSize = 16
+StudioCloseBtn.Font = Enum.Font.RobotoMono
+local StudioSidebar = Instance.new("ScrollingFrame", Studio)
+StudioSidebar.Position = UDim2.fromOffset(0, 45)
+StudioSidebar.Size = UDim2.new(0, 180, 1, -45)
+StudioSidebar.BackgroundColor3 = Color3.fromRGB(18, 19, 22)
+StudioSidebar.ScrollBarThickness = 2
+StudioSidebar.AutomaticCanvasSize = Enum.AutomaticSize.Y
+Instance.new("UIListLayout", StudioSidebar).Padding = UDim.new(0, 4)
+local Canvas = Instance.new("ScrollingFrame", Studio)
+Canvas.Position = UDim2.fromOffset(180, 45)
+Canvas.Size = UDim2.new(1, -180, 1, -45)
+Canvas.BackgroundColor3 = Color3.fromRGB(9, 10, 12)
+Canvas.CanvasSize = UDim2.new(3, 0, 3, 0)
+Canvas.ScrollBarThickness = 4
 StudioCloseBtn.MouseButton1Click:Connect(function() Studio.Visible = false Main.Visible = true end)
-
--- Drag and Drop Function Matrix for iPad Touches
 local function MakeBlockDraggable(block)
-    local activeDrag = false local trackInput, startPos, offsetPos
-    block.InputBegan:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-            activeDrag = true startPos = input.Position offsetPos = block.Position trackInput = input
+local activeDrag = false local trackInput, startPos, offsetPos
+block.InputBegan:Connect(function(input)
+if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+activeDrag = true startPos = input.Position offsetPos = block.Position trackInput = input
 end
 end)
 UIS.InputChanged:Connect(function(input)
@@ -148,24 +297,37 @@ end
 end)
 UIS.InputEnded:Connect(function(input) if input == trackInput or input.UserInputType == Enum.UserInputType.MouseButton1 then activeDrag = false trackInput = nil end end)
 end
--- Engine Generator for building Scratch Blocks
 local function spawnBlock(name, color, shapeType)
-local b = Create("Frame", { Size = UDim2.fromOffset(140, 34), BackgroundColor3 = color, Position = UDim2.fromOffset(math.random(50, 200), math.random(50, 200)) }, Canvas)
-Corner(b, shapeType == "Circle" and 15 or 5); Border(b)
-local lbl = Create("TextLabel", { Text = name, Size = UDim2.new(1, -10, 1, 0), Position = UDim2.fromOffset(5, 0), TextColor3 = Color3.fromRGB(255,255,255), TextSize = 10, Font = Enum.Font.RobotoMono, BackgroundTransparency = 1, TextXAlignment = Enum.TextXAlignment.Left }, b)
+local b = Instance.new("Frame", Canvas)
+b.Size = UDim2.fromOffset(140, 34)
+b.BackgroundColor3 = color
+b.Position = UDim2.fromOffset(math.random(50, 200), math.random(50, 200))
+Instance.new("UICorner", b).CornerRadius = UDim.new(0, shapeType == "Circle" and 15 or 5)
+local s = Instance.new("UIStroke", b) s.Color = Color3.fromRGB(45, 47, 55)
+local lbl = Instance.new("TextLabel", b)
+lbl.Text = name lbl.Size = UDim2.new(1, -10, 1, 0) lbl.Position = UDim2.fromOffset(5, 0)
+lbl.TextColor3 = Color3.fromRGB(255,255,255) lbl.TextSize = 10 lbl.Font = Enum.Font.RobotoMono
+lbl.BackgroundTransparency = 1 lbl.TextXAlignment = Enum.TextXAlignment.Left
 if shapeType == "Nested" then
-local inputNode = Create("TextBox", { Size = UDim2.fromOffset(40, 18), Position = UDim2.new(1, -48, 0, 8), BackgroundColor3 = Color3.fromRGB(15,15,15), TextColor3 = Color3.fromRGB(0,255,100), TextSize = 9, Font = Enum.Font.RobotoMono, Text = "" }, b)
-Corner(inputNode, 10); Border(inputNode)
+local inputNode = Instance.new("TextBox", b)
+inputNode.Size = UDim2.fromOffset(40, 18) inputNode.Position = UDim2.new(1, -48, 0, 8)
+inputNode.BackgroundColor3 = Color3.fromRGB(15,15,15) inputNode.TextColor3 = Color3.fromRGB(0,255,100)
+inputNode.TextSize = 9 inputNode.Font = Enum.Font.RobotoMono inputNode.Text = ""
+Instance.new("UICorner", inputNode).CornerRadius = UDim.new(0, 10)
 end
 MakeBlockDraggable(b)
 end
--- Add Palette Injectors to Studio Sidebar
 local function addPaletteHeader(title)
-local l = Create("TextLabel", { Text = " " .. title, Size = UDim2.new(1, 0, 0, 24), TextColor3 = Color3.fromRGB(140,140,145), TextSize = 10, Font = Enum.Font.RobotoMono, BackgroundTransparency = 1, TextXAlignment = Enum.TextXAlignment.Left }, StudioSidebar)
+local l = Instance.new("TextLabel", StudioSidebar)
+l.Text = " " .. title l.Size = UDim2.new(1, 0, 0, 24) l.TextColor3 = Color3.fromRGB(140,140,145)
+l.TextSize = 10 l.Font = Enum.Font.RobotoMono l.BackgroundTransparency = 1 l.TextXAlignment = Enum.TextXAlignment.Left
 end
 local function addPaletteRow(name, color, shape)
-local btn = Create("TextButton", { Text = " + " .. name, Size = UDim2.new(0.9, 0, 0, 26), BackgroundColor3 = Color3.fromRGB(24,25,30), TextColor3 = Color3.fromRGB(200,200,205), TextSize = 10, Font = Enum.Font.RobotoMono }, StudioSidebar)
-Corner(btn, 4); Border(btn)
+local btn = Instance.new("TextButton", StudioSidebar)
+btn.Text = " + " .. name btn.Size = UDim2.new(0.9, 0, 0, 26) btn.BackgroundColor3 = Color3.fromRGB(24,25,30)
+btn.TextColor3 = Color3.fromRGB(200,200,205) btn.TextSize = 10 btn.Font = Enum.Font.RobotoMono
+Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 4)
+local s = Instance.new("UIStroke", btn) s.Color = Color3.fromRGB(45, 47, 55)
 btn.MouseButton1Click:Connect(function() spawnBlock(name, color, shape) end)
 end
 addPaletteHeader("KAMPF MODUL [ROT]")
@@ -182,8 +344,11 @@ addPaletteRow("Schleife: Dauerhaft", Color3.fromRGB(235, 130, 0), "Square")
 addPaletteRow("Variable erstellen", Color3.fromRGB(235, 130, 0), "Circle")
 addPaletteHeader("CUSTOM BLOCKS [PINK]")
 local customBlockCount = 0
-local btnCustom = Create("TextButton", { Text = " + Create Custom Block", Size = UDim2.new(0.9, 0, 0, 28), BackgroundColor3 = Color3.fromRGB(35, 20, 30), TextColor3 = Color3.fromRGB(255, 120, 200), TextSize = 10, Font = Enum.Font.RobotoMono }, StudioSidebar)
-Corner(btnCustom, 4); Border(btnCustom, Color3.fromRGB(255, 100, 180))
+local btnCustom = Instance.new("TextButton", StudioSidebar)
+btnCustom.Text = " + Create Custom Block" btnCustom.Size = UDim2.new(0.9, 0, 0, 28) btnCustom.BackgroundColor3 = Color3.fromRGB(35, 20, 30)
+btnCustom.TextColor3 = Color3.fromRGB(255, 120, 200) btnCustom.TextSize = 10 btnCustom.Font = Enum.Font.RobotoMono
+Instance.new("UICorner", btnCustom).CornerRadius = UDim.new(0, 4)
+local bcStr = Instance.new("UIStroke", btnCustom) bcStr.Color = Color3.fromRGB(255, 100, 180)
 btnCustom.MouseButton1Click:Connect(function()
 customBlockCount = customBlockCount + 1
 local blockName = "Custom_Block_" .. customBlockCount
@@ -191,54 +356,193 @@ addPaletteRow(blockName, Color3.fromRGB(255, 80, 160), "Square")
 spawnBlock("DEF: " .. blockName, Color3.fromRGB(255, 60, 140), "Square")
 end)
 -- ==============================================================================
--- CATEGORY SELECTION CORE (Toxo Sidebar Integration)
+-- 🗂️ CATEGORY GENERATION WITH LEUCHTENDEM SCHRIFTBLAU
 -- ==============================================================================
 local SelectedCategory = nil
 local Pages = {}
-local tabButtons = {}
-local function addTabButton(name, displayName)
-local btn = Create("TextButton", { Size = UDim2.new(1, 0, 0, 30), BackgroundColor3 = Color3.fromRGB(25, 25, 27), BorderSizePixel = 0, Text = "  " .. displayName, TextColor3 = Color3.fromRGB(150, 150, 150), TextSize = 11, Font = Enum.Font.RobotoMono, TextXAlignment = Enum.TextXAlignment.Left }, Navigation)
-local Accent = Create("Frame", { Position = UDim2.fromOffset(0, 5), Size = UDim2.fromOffset(3, 22), BackgroundColor3 = Color3.fromRGB(0, 140, 255), Visible = false }, btn) Corner(Accent, 4)
-btn.MouseButton1Click:Connect(function()
-if SelectedCategory == btn then return end
-if SelectedCategory then
-SelectedCategory.TextColor3 = Color3.fromRGB(150, 150, 150)
-SelectedCategory.Frame.Visible = false
+local CategoriesData = {}
+local Categories = {
+{"\226\154\153", "Player"}, {"\240\159\148\180", "Aimbot"}, {"\240\159\142\175", "Sil Shot"},
+{"\240\159\148\171", "Gun Mods"}, {"\240\159\145\145", "VS Spawner"}, {"\240\159\170\162", "Auto Rope"},
+{"\240\159\140\140", "Sky"}, {"\240\159\145\129", "ESP"}, {"\240\159\143\156", "Teleport"},
+{"\240\159\154\151", "Car"}, {"\240\159\142\168", "Car Colors"}, {"\240\159\145\174", "Police"},
+{"\240\159\140\144", "Server"}, {"\226\132\185", "Info"}, {"\240\159\167\169", "Scratch"}
+}
+-- Module Helpers
+local function createSectionHeader(parent, text, yPos)
+local lbl = Instance.new("TextLabel", parent)
+lbl.Size = UDim2.new(0.9, 0, 0, 25)
+lbl.Position = UDim2.new(0.05, 0, 0, yPos)
+lbl.TextColor3 = Color3.fromRGB(240, 240, 240)
+lbl.TextSize = 11; lbl.Font = Enum.Font.RobotoMono; lbl.BackgroundTransparency = 1
+lbl.TextXAlignment = Enum.TextXAlignment.Left; lbl.Text = "| " .. text
 end
-SelectedCategory = btn
-btn.TextColor3 = Color3.fromRGB(0, 140, 255) -- SCHRIFTBLAU AKTIV!
-Accent.Visible = true
-if Pages[name] then Pages[name].Visible = true end
--- Special Studio Category Bypass Execution Trigger
-if name == "Scratch" then Studio.Visible = true Main.Visible = false Accent.Visible = false btn.TextColor3 = Color3.fromRGB(150, 150, 150) end
+local function createModuleRow(parent, text, yPos, typeStr, configKey, callback)
+local frame = Instance.new("Frame", parent)
+frame.Size = UDim2.new(0.9, 0, 0, 32); frame.Position = UDim2.new(0.05, 0, 0, yPos)
+frame.BackgroundColor3 = Color3.fromRGB(20, 21, 26); frame.BorderSizePixel = 0
+Instance.new("UICorner", frame).CornerRadius = UDim.new(0, 4)
+local str = Instance.new("UIStroke", frame); str.Color = Color3.fromRGB(45, 47, 55)
+local lbl = Instance.new("TextLabel", frame)
+lbl.Size = UDim2.new(0.6, 0, 1, 0); lbl.Position = UDim2.new(0.04, 0, 0, 0)
+lbl.TextColor3 = Color3.fromRGB(190, 190, 190); lbl.TextSize = 11; lbl.Font = Enum.Font.RobotoMono; lbl.BackgroundTransparency = 1; lbl.TextXAlignment = Enum.TextXAlignment.Left; lbl.Text = text
+if typeStr == "Checkbox" then
+local box = Instance.new("TextButton", frame)
+box.Size = UDim2.fromOffset(18, 18); box.Position = UDim2.new(1, -28, 0, 7)
+box.BackgroundColor3 = Color3.fromRGB(28, 29, 35)
+Instance.new("UICorner", box).CornerRadius = UDim.new(0, 4)
+local bStr = Instance.new("UIStroke", box); bStr.Color = Color3.fromRGB(55, 58, 68)
+box.TextColor3 = Color3.fromRGB(255, 255, 255); box.TextSize = 11; box.Font = Enum.Font.RobotoMono
+local function updateBox()
+if getgenv().JinxKingConfig[configKey] then box.BackgroundColor3 = Color3.fromRGB(0, 140, 255) box.Text = "✓" else box.BackgroundColor3 = Color3.fromRGB(28, 29, 35) box.Text = "" end
+end
+updateBox()
+box.MouseButton1Click:Connect(function() getgenv().JinxKingConfig[configKey] = not getgenv().JinxKingConfig[configKey] updateBox() if callback then callback() end end)
+elseif typeStr == "Button" then
+local act = Instance.new("TextButton", frame)
+act.Size = UDim2.fromOffset(55, 24); act.Position = UDim2.new(1, -60, 0, 4)
+act.BackgroundColor3 = Color3.fromRGB(28, 29, 35); act.TextColor3 = Color3.fromRGB(180, 180, 180)
+act.Text = configKey; act.TextSize = 11; act.Font = Enum.Font.RobotoMono
+Instance.new("UICorner", act).CornerRadius = UDim.new(0, 4)
+act.MouseButton1Click:Connect(callback)
+end
+return frame
+end
+local function createCustomSlider(parent, text, yPos, color, maxVal, configKey, suffix)
+local frame = Instance.new("Frame", parent); frame.Size = UDim2.new(0.9, 0, 0, 45); frame.Position = UDim2.new(0.05, 0, 0, yPos); frame.BackgroundTransparency = 1
+local label = Instance.new("TextLabel", frame); label.Size = UDim2.new(1, 0, 0, 15); label.TextColor3 = Color3.fromRGB(190, 190, 190); label.TextSize = 11; label.Font = Enum.Font.RobotoMono; label.BackgroundTransparency = 1; label.TextXAlignment = Enum.TextXAlignment.Left
+local slideBar = Instance.new("Frame", frame); slideBar.Size = UDim2.new(1, 0, 0, 18); slideBar.Position = UDim2.new(0, 0, 0, 18); slideBar.BackgroundColor3 = Color3.fromRGB(24, 24, 26); slideBar.BorderSizePixel = 0
+Instance.new("UICorner", slideBar).CornerRadius = UDim.new(0, 4)
+local fill = Instance.new("Frame", slideBar); fill.Size = UDim2.new(getgenv().JinxKingConfig[configKey]/maxVal, 0, 1, 0); fill.BackgroundColor3 = color; fill.BorderSizePixel = 0
+Instance.new("UICorner", fill).CornerRadius = UDim.new(0, 4)
+label.Text = "  " .. text .. " : " .. getgenv().JinxKingConfig[configKey] .. suffix
+slideBar.InputBegan:Connect(function(input)
+if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+local pct = math.clamp((input.Position.X - slideBar.AbsolutePosition.X) / slideBar.AbsoluteSize.X, 0, 1)
+fill.Size = UDim2.new(pct, 0, 1, 0); local finalVal = math.round(pct * maxVal); getgenv().JinxKingConfig[configKey] = finalVal
+label.Text = "  " .. text .. " : " .. finalVal .. suffix
+end
 end)
-btn.Parent = Navigation
-tabButtons[name] = btn
 end
-local pInfo = Create("ScrollingFrame", { Size = UDim2.new(1, 0, 1, 0), BackgroundTransparency = 1, BorderSizePixel = 0, Visible = false }, Content) Pages["Info"] = pInfo
-local pColors = Create("ScrollingFrame", { Size = UDim2.new(1, 0, 1, 0), BackgroundTransparency = 1, BorderSizePixel = 0, Visible = false }, Content) Pages["Colors"] = pColors
-local pScratch = Create("ScrollingFrame", { Size = UDim2.new(1, 0, 1, 0), BackgroundTransparency = 1, BorderSizePixel = 0, Visible = false }, Content) Pages["Scratch"] = pScratch
-addTabButton("Colors", "\240\159\142\168 | Car Colors.")
-addTabButton("Scratch", "\240\159\167\169 | Block Engine Studio.") -- Deaktiviert Hauptmenü und springt in den Scratch-Modus
-addTabButton("Info", "\226\132\185 | Info.")
--- Info content load
-createSectionHeader(pInfo, "Infos & Configuration Matrix", 10)
-local function buildInfo(txt, y)
-local f = Create("Frame", { Size = UDim2.new(0.9, 0, 0, 32), Position = UDim2.new(0.05, 0, 0, y), BackgroundColor3 = Color3.fromRGB(20,21,26), BorderSizePixel = 0 }, pInfo) Corner(f,4); Border(f)
-local l = Create("TextLabel", { Text = "  " .. txt, Size = UDim2.new(1, 0, 1, 0), TextColor3 = Color3.fromRGB(180,180,185), TextSize = 11, Font = Enum.Font.RobotoMono, BackgroundTransparency = 1, TextXAlignment = Enum.TextXAlignment.Left }, f)
+-- Iterator for tabs FIX: cat[1] und cat[2] repariert!
+for index, cat in ipairs(Categories) do
+local emoji, name = cat[1], cat[2]
+local formattedName = name .. "."
+local Page = Instance.new("ScrollingFrame", Content)
+Page.Name = name .. "Page"
+Page.Size = UDim2.new(1, 0, 1, 0)
+Page.BackgroundTransparency = 1
+Page.BorderSizePixel = 0
+Page.Visible = false
+Page.ScrollBarThickness = 2
+Page.CanvasSize = UDim2.new(0, 0, 2, 0)
+Pages[name] = Page
+local Button = Instance.new("TextButton", Navigation)
+Button.Size = UDim2.new(1, 0, 0, 32)
+Button.BackgroundColor3 = Color3.fromRGB(18, 19, 23)
+Button.BorderSizePixel = 0
+Button.Text = ""
+Button.AutoButtonColor = false
+local Accent = Instance.new("Frame", Button)
+Accent.Position = UDim2.fromOffset(0, 5)
+Accent.Size = UDim2.fromOffset(3, 22)
+Accent.BackgroundColor3 = Color3.fromRGB(0, 140, 255)
+Accent.Visible = false
+Instance.new("UICorner", Accent).CornerRadius = UDim.new(0, 4)
+local ELabel = Instance.new("TextLabel", Button)
+ELabel.Position = UDim2.fromOffset(8, 0)
+ELabel.Size = UDim2.fromOffset(20, 32)
+ELabel.BackgroundTransparency = 1
+ELabel.Text = emoji
+ELabel.TextColor3 = Color3.fromRGB(255,255,255)
+ELabel.TextSize = 12
+ELabel.Font = Enum.Font.RobotoMono
+local Label = Instance.new("TextLabel", Button)
+Label.Position = UDim2.fromOffset(34, 0)
+Label.Size = UDim2.new(1, -40, 1, 0)
+Label.BackgroundTransparency = 1
+Label.Text = formattedName
+Label.TextColor3 = Color3.fromRGB(245, 246, 250)
+Label.TextSize = 11
+Label.Font = Enum.Font.RobotoMono
+Label.TextXAlignment = Enum.TextXAlignment.Left
+Button.Activated:Connect(function()
+if name == "Scratch" then
+Studio.Visible = true
+Main.Visible = false
+return
 end
-buildInfo("Authors: JanKaja", 40)
-buildInfo("Edition: v3.5 [Premium Block Edition]", 75)
+if SelectedCategory then
+SelectedCategory.Accent.Visible = false
+SelectedCategory.Label.TextColor3 = Color3.fromRGB(245, 246, 250)
+Pages[SelectedCategory.Name].Visible = false
+end
+SelectedCategory = { Button = Button, Accent = Accent, Label = Label, Name = name }
+Accent.Visible = true
+Label.TextColor3 = Color3.fromRGB(0, 140, 255) -- LEUCHTENDES SCHRIFTBLAU
+Page.Visible = true
+end)
+table.insert(CategoriesData, { Button = Button, Accent = Accent, Label = Label, Page = Page, Name = name })
+end
 -- ==============================================================================
--- PROFILE FOOTER LOGIC (1:1 CLONED PRESTIGE ELEMENT)
+-- MODULE LOADERS
 -- ==============================================================================
-local Profile = Create("Frame", { Name = "Profile", Position = UDim2.new(0, 0, 1, -58), Size = UDim2.new(1, 0, 0, 58), BackgroundColor3 = Color3.fromRGB(20, 21, 26), BorderSizePixel = 0 }, Sidebar)
-local ProfileIcon = Create("ImageLabel", { Position = UDim2.fromOffset(10, 10), Size = UDim2.fromOffset(38, 38), BackgroundColor3 = Color3.fromRGB(28, 29, 35), BorderSizePixel = 0, Image = Players:GetUserThumbnailAsync(Player.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size42x42) }, Profile)
-Corner(ProfileIcon, 50); Border(ProfileIcon)
-Create("TextLabel", { Position = UDim2.fromOffset(54, 11), Size = UDim2.new(1, -60, 0, 16), BackgroundTransparency = 1, Text = "JinxKing", TextColor3 = Color3.fromRGB(245, 246, 250), Font = Enum.Font.RobotoMono, TextSize = 11, TextXAlignment = Enum.TextXAlignment.Left }, Profile)
-Create("TextLabel", { Position = UDim2.fromOffset(54, 28), Size = UDim2.new(1, -60, 0, 14), BackgroundTransparency = 1, Text = Player.Name, TextColor3 = Color3.fromRGB(130, 133, 145), Font = Enum.Font.RobotoMono, TextSize = 9, TextXAlignment = Enum.TextXAlignment.Left }, Profile)
--- Boot Default Tab
-pInfo.Visible = true
-SelectedCategory = tabButtons["Info"]
-tabButtons["Info"].TextColor3 = Color3.fromRGB(0, 140, 255)
-print("[JinxKing Core Engine] Framework successfully launched on your iPad Device!")
+-- Info Page Content
+createSectionHeader(Pages["Info"], "Infos & Credits", 10)
+createModuleRow(Pages["Info"], "Authors: JanKaja", 40, "Button", "@", function() if setclipboard then setclipboard("JanKaja") end end)
+createModuleRow(Pages["Info"], "Version: 3.5 [Premium]", 75, "Button", "@", function() if setclipboard then setclipboard("3.5") end end)
+-- Server Page Content
+createSectionHeader(Pages["Server"], "Server Operations", 10)
+createModuleRow(Pages["Server"], "Admin Radar (Auto-Kick)", 40, "Checkbox", "AdminDetectActive")
+createModuleRow(Pages["Server"], "Instant Rejoin", 75, "Button", "@", function() game:GetService("TeleportService"):Teleport(game.PlaceId, Player) end)
+-- Car Colors Content
+createSectionHeader(Pages["CarColors"], "Vehicle Light Tuning", 10)
+local plateRow = createModuleRow(Pages["CarColors"], "Server Custom Plate", 40, "Button", "Input", nil)
+local InFrame = Instance.new("Frame", Screen); InFrame.Size = UDim2.fromOffset(240, 40); InFrame.Position = UDim2.new(0.4, 0, 0.45, 0); InFrame.BackgroundColor3 = Color3.fromRGB(20, 21, 26); InFrame.Visible = false
+Instance.new("UICorner", InFrame).CornerRadius = UDim.new(0, 4)
+local hIn = Instance.new("TextBox", InFrame); hIn.Size = UDim2.new(0.9, 0, 0.8, 0); hIn.Position = UDim2.new(0.05, 0, 0.1, 0); hIn.BackgroundColor3 = Color3.fromRGB(15, 16, 20); hIn.TextColor3 = Color3.fromRGB(255, 255, 255); hIn.PlaceholderText = "Text..."
+local inputBtn = plateRow:FindFirstChildOfClass("TextButton")
+if inputBtn then
+inputBtn.MouseButton1Click:Connect(function() InFrame.Visible = not InFrame.Visible end)
+end
+hIn.FocusLost:Connect(function() getgenv().JinxKingConfig.CustomPlateText = hIn.Text InFrame.Visible = false end)
+createCustomSlider(Pages["CarColors"], "Reichweite", 85, Color3.fromRGB(0, 220, 120), 200, "LightRange", " Meter")
+createCustomSlider(Pages["CarColors"], "Helligkeit", 140, Color3.fromRGB(235, 180, 0), 150, "LightBrightness", " Stärke")
+-- Police Page Content
+createSectionHeader(Pages["Police"], "Anti-Police Measures", 10)
+createModuleRow(Pages["Police"], "Radar Farm [Auto Blitzer]", 40, "Checkbox", "AntiAfkActive")
+-- ==============================================================================
+-- PROFILE FOOTER ELEMENT (Avatar-Kreis, JinxKing & Username)
+-- ==============================================================================
+local Profile = Instance.new("Frame", Sidebar)
+Profile.Name = "Profile"
+Profile.Position = UDim2.new(0, 0, 1, -58)
+Profile.Size = UDim2.new(1, 0, 0, 58)
+Profile.BackgroundColor3 = Color3.fromRGB(20, 21, 26)
+Profile.BorderSizePixel = 0
+local ProfileIcon = Instance.new("ImageLabel", Profile)
+ProfileIcon.Position = UDim2.fromOffset(10, 10)
+ProfileIcon.Size = UDim2.fromOffset(38, 38)
+ProfileIcon.BackgroundColor3 = Color3.fromRGB(28, 29, 35)
+ProfileIcon.BorderSizePixel = 0
+ProfileIcon.Image = Players:GetUserThumbnailAsync(Player.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size42x42)
+Instance.new("UICorner", ProfileIcon).CornerRadius = UDim.new(1, 0)
+local brand = Instance.new("TextLabel", Profile)
+brand.Position = UDim2.fromOffset(54, 11); brand.Size = UDim2.new(1, -60, 0, 16); brand.BackgroundTransparency = 1
+brand.Text = "JinxKing"; brand.TextColor3 = Color3.fromRGB(245, 246, 250); brand.Font = Enum.Font.RobotoMono; brand.TextSize = 11; brand.TextXAlignment = Enum.TextXAlignment.Left
+local user = Instance.new("TextLabel", Profile)
+user.Position = UDim2.fromOffset(54, 28); user.Size = UDim2.new(1, -60, 0, 14); user.BackgroundTransparency = 1
+user.Text = Player.Name; user.TextColor3 = Color3.fromRGB(130, 133, 145); user.Font = Enum.Font.RobotoMono; user.TextSize = 9; user.TextXAlignment = Enum.TextXAlignment.Left
+-- Trigger Initial Page Activation
+if #CategoriesData > 0 then
+-- Suche den Info-Tab in den Daten
+for _, data in ipairs(CategoriesData) do
+if data.Name == "Info" then
+SelectedCategory = data
+data.Accent.Visible = true
+data.Label.TextColor3 = Color3.fromRGB(0, 140, 255)
+data.Page.Visible = true
+break
+end
+end
+end
