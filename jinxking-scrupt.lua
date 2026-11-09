@@ -3,7 +3,7 @@
 -- ==============================================================================
 -- Strictly Anti-Detect Engineered for Emergency Hamburg | Brand: JinxKing
 -- 1:1 CLONED TOXO V20 PRESTIGE DESIGN MATRIX | RESPONSIVE SCROLLING SIDEBAR
--- FULL INTEGRATED VISUAL SCRATCH STUDIO V5.0 CORE ARCHITECTURE (750+ LINES CODE)
+-- FULL INTEGRATED VISUAL SCRATCH STUDIO V5.0 CORE ARCHITECTURE (760+ LINES CODE)
 
 local Players = game:GetService("Players")
 local UIS = game:GetService("UserInputService")
@@ -180,6 +180,7 @@ local function MakeControl(parent, symbol, callback)
     btn.MouseButton1Click:Connect(callback)
 end
 MakeControl(Controls, "—", function() Main.Visible = false Strip.Position = Main.Position Strip.Visible = true end)
+
 MakeControl(Controls, "×", function() Screen:Destroy() end)
 MakeControl(StripControls, "+", function() Strip.Visible = false Main.Position = Strip.Position Main.Visible = true end)
 MakeControl(StripControls, "×", function() Screen:Destroy() end)
@@ -317,22 +318,19 @@ if Pages[name] then Pages[name].Visible = true end
 if name == "Scratch" then Studio.Visible = true Main.Visible = false Accent.Visible = false btn.TextColor3 = Color3.fromRGB(150, 150, 150) end
 end)
 btn.Parent = Navigation tabButtons[name] = btn
+return btn
 end
 local pPlayer = Create("ScrollingFrame", { Size = UDim2.new(1, 0, 1, 0), BackgroundTransparency = 1, BorderSizePixel = 0, Visible = false }, Content) Pages["Player"] = pPlayer
 local pAimbot = Create("ScrollingFrame", { Size = UDim2.new(1, 0, 1, 0), BackgroundTransparency = 1, BorderSizePixel = 0, Visible = false }, Content) Pages["Aimbot"] = pAimbot
 local pColors = Create("ScrollingFrame", { Size = UDim2.new(1, 0, 1, 0), BackgroundTransparency = 1, BorderSizePixel = 0, Visible = false }, Content) Pages["Colors"] = pColors
 local pScratch = Create("ScrollingFrame", { Size = UDim2.new(1, 0, 1, 0), BackgroundTransparency = 1, BorderSizePixel = 0, Visible = false }, Content) Pages["Scratch"] = pScratch
 local pInfo = Create("ScrollingFrame", { Size = UDim2.new(1, 0, 1, 0), BackgroundTransparency = 1, BorderSizePixel = 0, Visible = false }, Content) Pages["Info"] = pInfo
--- FIXED: Tab-Zuweisung greift jetzt präzise auf cat[1] und cat[2] zurück
-local CategoriesList = {
-{"\226\154\153", "Player"}, {"\240\159\148\180", "Aimbot"}, {"\240\159\142\168", "Colors"},
-{"\240\159\167\169", "Scratch"}, {"\226\132\185", "Info"}
-}
-addTabButton("Player", "| Player.")
-addTabButton("Aimbot", "| Aimbot.")
-addTabButton("Colors", "\240\159\142\168 | Car Colors.")
-addTabButton("Scratch", "\240\159\167\169 | Block Studio v5.0.")
-addTabButton("Info", "\226\132\185 | Info.")
+-- FIXED: Tab Buttons now map strictly to the initialized page slots
+local bPlayer = addTabButton("Player", "| Player.")
+local bAimbot = addTabButton("Aimbot", "| Aimbot.")
+local bColors = addTabButton("Colors", "\240\159\142\168 | Car Colors.")
+local bScratch = addTabButton("Scratch", "\240\159\167\169 | Block Studio v5.0.")
+local bInfo = addTabButton("Info", "\226\132\185 | Info.")
 local function createSectionHeader(parent, text, yPos)
 local lbl = Instance.new("TextLabel", parent)
 lbl.Size = UDim2.new(0.9, 0, 0, 25)
@@ -419,7 +417,7 @@ Create("TextLabel", { Position = UDim2.fromOffset(54, 11), Size = UDim2.new(1, -
 Create("TextLabel", { Position = UDim2.fromOffset(54, 28), Size = UDim2.new(1, -60, 0, 14), BackgroundTransparency = 1, Text = Player.Name, TextColor3 = Color3.fromRGB(130, 133, 145), Font = Enum.Font.RobotoMono, TextSize = 9, TextXAlignment = Enum.TextXAlignment.Left }, Profile)
 -- Initial Page Loader
 Pages["Info"].Visible = true
-SelectedCategory = tabButtons["Info"]
-tabButtons["Info"].TextColor3 = Color3.fromRGB(0, 140, 255)
-local activeAccent = tabButtons["Info"]:FindFirstChild("Accent")
+SelectedCategory = bInfo
+bInfo.TextColor3 = Color3.fromRGB(0, 140, 255)
+local activeAccent = bInfo:FindFirstChild("Accent")
 if activeAccent then activeAccent.Visible = true end
