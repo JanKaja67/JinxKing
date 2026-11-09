@@ -423,4 +423,3 @@ SelectedCategory = tabButtons["Info"]
 tabButtons["Info"].TextColor3 = Color3.fromRGB(0, 140, 255)
 local activeAccent = tabButtons["Info"]:FindFirstChild("Accent")
 if activeAccent then activeAccent.Visible = true end
-print("[JinxKing V5 Master Engine] Successfully launched over 750 lines!")
