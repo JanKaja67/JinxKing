@@ -1,16 +1,15 @@
 -- ==============================================================================
 -- 👑 PROJECT JINXKING: THE OFFICIAL PREMIUM MULTI-PLATFORM EXPLOIT HUB v5.0
 -- ==============================================================================
--- Strictly Anti-Detect Engineered for Emergency Hamburg | Brand: JinxKing
+-- Strictly Engineered for Emergency Hamburg | Brand: JinxKing | 750+ Lines Core
 -- 1:1 CLONED TOXO V20 PRESTIGE DESIGN MATRIX | RESPONSIVE SCROLLING SIDEBAR
--- FULL INTEGRATED VISUAL SCRATCH STUDIO V5.0 CORE ARCHITECTURE (760+ LINES CODE)
+-- FULL FIXED VISUAL SCRATCH STUDIO V5.0 CORE ARCHITECTURE (REPAIRED BUILD)
 
 local Players = game:GetService("Players")
 local UIS = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 local RunService = game:GetService("RunService")
 local Lighting = game:GetService("Lighting")
-local HttpService = game:GetService("HttpService")
 
 local Player = Players.LocalPlayer
 local PlayerGui = Player:WaitForChild("PlayerGui")
@@ -44,63 +43,13 @@ for _, gui in ipairs(PlayerGui:GetChildren()) do
 end
 
 -- ==============================================================================
--- 🛡️ ADVANCED BACKGROUND EXPLOIT OPERATIONS ENGINE
--- ==============================================================================
-task.spawn(function()
-    while task.wait(2) do
-        if getgenv().JinxKingConfig.AdminDetectActive then
-            pcall(function()
-                for _, p in pairs(Players:GetPlayers()) do
-                    if p:GetRankInGroup(1234567) >= 200 or p.Name:lower():find("admin") or p.Name:lower():find("mod") then
-                        Player:Kick("[JinxKing Safeguard] Admin or Moderator presence detected! Session closed safely.")
-                    end
-                end
-            end)
-        end
-    end
-end)
-
-pcall(function()
-    Player.Idled:Connect(function()
-        if getgenv().JinxKingConfig.AntiAfkActive then
-            game:GetService("VirtualUser"):Button2Down(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
-            task.wait(1)
-            game:GetService("VirtualUser"):Button2Up(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
-        end
-    end)
-end)
-
-task.spawn(function()
-    while task.wait(1) do
-        if getgenv().JinxKingConfig.CustomPlateText ~= "" then
-            pcall(function()
-                for _, vehicle in pairs(workspace:GetDescendants()) do
-                    if vehicle.Name:lower():find("car") or vehicle.Name:lower():find("vehicle") then
-                        local plate = vehicle:FindFirstChild("LicensePlate", true) or vehicle:FindFirstChild("Nummernschild", true)
-                        if plate then
-                            local textLabel = plate:FindFirstChildOfClass("TextLabel") or plate:FindFirstChildOfClass("TextBox")
-                            if textLabel then textLabel.Text = getgenv().JinxKingConfig.CustomPlateText textLabel.TextScaled = true end
-                        end
-                    end
-                end
-                local jXg = game:GetService("ReplicatedStorage"):WaitForChild("jXg", 2)
-                if jXg then
-                    local remote = jXg:WaitForChild("96fe0154-8895-4aad-bb55-27adea18d2da", 2)
-                    if remote and remote:IsA("RemoteEvent") then
-                        remote:FireServer(unpack({0, getgenv().JinxKingConfig.CustomPlateText, "", ""}))
-                    end
-                end
-            end)
-        end
-    end
-end)
-
--- ==============================================================================
--- 🎨 GRAPHICAL INTERFACE CONFIGURATOR UTILITIES
+-- 🎨 GRAPHICAL INTERFACE CONFIGURATOR UTILITIES (REPAIRED BY JANKAJA)
 -- ==============================================================================
 local function Create(class, props, parent)
     local object = Instance.new(class)
-    for key, value in pairs(props) do object[key] = value end
+    for key, value in pairs(props) do 
+        object[key] = value 
+    end
     object.Parent = parent
     return object
 end
@@ -138,30 +87,103 @@ workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(UpdateS
 -- ==============================================================================
 -- 🟣 THE MAIN APPLICATION WINDOW (Toxo Premium Base Framework)
 -- ==============================================================================
-local Main = Create("Frame", { Name = "MainWindow", Size = UDim2.fromOffset(580, 380), Position = UDim2.new(0.5, -290, 0.5, -190), BackgroundColor3 = Color3.fromRGB(15, 16, 20), BorderSizePixel = 0, Visible = true }, Screen)
+local Main = Create("Frame", { 
+    Name = "MainWindow", 
+    Size = UDim2.fromOffset(580, 380), 
+    Position = UDim2.new(0.5, -290, 0.5, -190), 
+    BackgroundColor3 = Color3.fromRGB(15, 16, 20), 
+    BorderSizePixel = 0, 
+    Visible = true 
+}, Screen)
 Corner(Main, 10); Border(Main)
 
-local Header = Create("Frame", Main) Header.Size = UDim2.new(1, 0, 0, 42) Header.BackgroundColor3 = Color3.fromRGB(22, 23, 28) Header.BorderSizePixel = 0
-local HeaderDrag = Create("TextButton", Header) HeaderDrag.Size = UDim2.new(1, -85, 1, 0) HeaderDrag.BackgroundTransparency = 1 HeaderDrag.Text = ""
+local Header = Create("Frame", {
+    Name = "Header",
+    Size = UDim2.new(1, 0, 0, 42),
+    BackgroundColor3 = Color3.fromRGB(22, 23, 28),
+    BorderSizePixel = 0
+}, Main)
 
-local Title = Create("TextLabel", HeaderDrag)
-Title.Text = "| JinxKing Hub v5.0 Prestige | Emergency Hamburg" Title.Position = UDim2.fromOffset(14, 0) Title.Size = UDim2.new(1, -20, 1, 0) Title.TextColor3 = Color3.fromRGB(245, 246, 250) Title.TextSize = 11 Title.Font = Enum.Font.RobotoMono Title.BackgroundTransparency = 1 Title.TextXAlignment = Enum.TextXAlignment.Left
+local HeaderDrag = Create("TextButton", {
+    Name = "DragArea",
+    Size = UDim2.new(1, -85, 1, 0),
+    BackgroundTransparency = 1,
+    Text = ""
+}, Header)
 
-local Controls = Create("Frame", Header) Controls.Position = UDim2.new(1, -74, 0, 7) Controls.Size = UDim2.fromOffset(66, 28) Controls.BackgroundTransparency = 1
-Create("UIListLayout", { FillDirection = Enum.FillDirection.Horizontal, HorizontalAlignment = Enum.HorizontalAlignment.Right, Padding = UDim.new(0, 5) }, Controls)
+local Title = Create("TextLabel", {
+    Text = "| JinxKing Hub v5.0 Prestige | Emergency Hamburg",
+    Position = UDim2.fromOffset(14, 0),
+    Size = UDim2.new(1, -20, 1, 0),
+    TextColor3 = Color3.fromRGB(245, 246, 250),
+    TextSize = 11,
+    Font = Enum.Font.RobotoMono,
+    BackgroundTransparency = 1,
+    TextXAlignment = Enum.TextXAlignment.Left
+}, HeaderDrag)
+
+local Controls = Create("Frame", {
+    Position = UDim2.new(1, -74, 0, 7),
+    Size = UDim2.fromOffset(66, 28),
+    BackgroundTransparency = 1
+}, Header)
+
+Create("UIListLayout", { 
+    FillDirection = Enum.FillDirection.Horizontal, 
+    HorizontalAlignment = Enum.HorizontalAlignment.Right, 
+    Padding = UDim.new(0, 5) 
+}, Controls)
 
 -- Minimized Strip Bar Frame Setup
-local Strip = Create("Frame", Screen) Strip.Name = "JinxKingStrip" Strip.Size = UDim2.fromOffset(460, 42) Strip.Position = UDim2.new(0.5, -230, 0.2, 0) Strip.BackgroundColor3 = Color3.fromRGB(15, 16, 20) Strip.Visible = false
+local Strip = Create("Frame", {
+    Name = "JinxKingStrip",
+    Size = UDim2.fromOffset(460, 42),
+    Position = UDim2.new(0.5, -230, 0.2, 0),
+    BackgroundColor3 = Color3.fromRGB(15, 16, 20),
+    BorderSizePixel = 0,
+    Visible = false
+}, Screen)
 Corner(Strip, 8); Border(Strip)
-local StripDrag = Create("TextButton", Strip) StripDrag.Size = UDim2.new(1, -80, 1, 0) StripDrag.BackgroundTransparency = 1 StripDrag.Text = ""
-local StripTitle = Create("TextLabel", StripDrag) StripTitle.Text = "| JinxKing Hub v5.0 | Minimiert" StripTitle.Position = UDim2.fromOffset(14, 0) StripTitle.Size = UDim2.new(1, -20, 1, 0) StripTitle.TextColor3 = Color3.fromRGB(245, 246, 250) StripTitle.TextSize = 12 StripTitle.Font = Enum.Font.RobotoMono StripTitle.BackgroundTransparency = 1 StripTitle.TextXAlignment = Enum.TextXAlignment.Left
-local StripControls = Create("Frame", Strip) StripControls.Position = UDim2.new(1, -74, 0, 7) StripControls.Size = UDim2.fromOffset(66, 28) StripControls.BackgroundTransparency = 1
-Create("UIListLayout", { FillDirection = Enum.FillDirection.Horizontal, HorizontalAlignment = Enum.HorizontalAlignment.Right, Padding = UDim.new(0, 5) }, StripControls)
+
+local StripDrag = Create("TextButton", {
+    Name = "StripDrag",
+    Size = UDim2.new(1, -80, 1, 0),
+    BackgroundTransparency = 1,
+    Text = ""
+}, Strip)
+
+local StripTitle = Create("TextLabel", {
+    Text = "| JinxKing Hub v5.0 | Minimiert",
+    Position = UDim2.fromOffset(14, 0),
+    Size = UDim2.new(1, -20, 1, 0),
+    TextColor3 = Color3.fromRGB(245, 246, 250),
+    TextSize = 12,
+    Font = Enum.Font.RobotoMono,
+    BackgroundTransparency = 1,
+    TextXAlignment = Enum.TextXAlignment.Left
+}, StripDrag)
+
+local StripControls = Create("Frame", {
+    Position = UDim2.new(1, -74, 0, 7),
+    Size = UDim2.fromOffset(66, 28),
+    BackgroundTransparency = 1
+}, Strip)
+
+Create("UIListLayout", { 
+    FillDirection = Enum.FillDirection.Horizontal, 
+    HorizontalAlignment = Enum.HorizontalAlignment.Right, 
+    Padding = UDim.new(0, 5) 
+}, StripControls)
 
 local function MakeDraggable(frame, handle)
     local dragging, dragInput, dragStart, startPosition
     handle.InputBegan:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then dragging = true dragStart = input.Position startPosition = frame.Position dragInput = input end
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then 
+            dragging = true 
+            dragStart = input.Position 
+            startPosition = frame.Position 
+            dragInput = input 
+        end
     end)
     UIS.InputChanged:Connect(function(input)
         if not dragging then return end
@@ -170,30 +192,52 @@ local function MakeDraggable(frame, handle)
             frame.Position = UDim2.new(startPosition.X.Scale, startPosition.X.Offset + delta.X, startPosition.Y.Scale, startPosition.Y.Offset + delta.Y)
         end
     end)
-    UIS.InputEnded:Connect(function(input) if input == dragInput or input.UserInputType == Enum.UserInputType.MouseButton1 then dragging = false dragInput = nil end end)
+    UIS.InputEnded:Connect(function(input) 
+        if input == dragInput or input.UserInputType == Enum.UserInputType.MouseButton1 then 
+            dragging = false 
+            dragInput = nil 
+        end 
+    end)
 end
 MakeDraggable(Main, HeaderDrag); MakeDraggable(Strip, StripDrag)
 
 local function MakeControl(parent, symbol, callback)
-    local f = Create("Frame", { Size = UDim2.fromOffset(24, 24), BackgroundColor3 = Color3.fromRGB(28, 29, 35) }, parent) Corner(f, 4); Border(f)
-    local btn = Create("TextButton", { Size = UDim2.new(1, 0, 1, 0), BackgroundTransparency = 1, Text = symbol, TextColor3 = Color3.fromRGB(245, 246, 250), TextSize = 11, Font = Enum.Font.RobotoMono }, f)
+    local f = Create("Frame", { 
+        Size = UDim2.fromOffset(24, 24), 
+        BackgroundColor3 = Color3.fromRGB(28, 29, 35) 
+    }, parent) 
+    Corner(f, 4); Border(f)
+    
+    local btn = Create("TextButton", { 
+        Size = UDim2.new(1, 0, 1, 0), 
+        BackgroundTransparency = 1, 
+        Text = symbol, 
+        TextColor3 = Color3.fromRGB(245, 246, 250), 
+        TextSize = 11, 
+        Font = Enum.Font.RobotoMono 
+    }, f)
     btn.MouseButton1Click:Connect(callback)
+    return btn
 end
-MakeControl(Controls, "—", function() Main.Visible = false Strip.Position = Main.Position Strip.Visible = true end)
 
-MakeControl(Controls, "×", function() Screen:Destroy() end)
-MakeControl(StripControls, "+", function() Strip.Visible = false Main.Position = Strip.Position Main.Visible = true end)
-MakeControl(StripControls, "×", function() Screen:Destroy() end)
+local MinimizeButton = MakeControl(Controls, "—", function() Main.Visible = false Strip.Position = Main.Position Strip.Visible = true end)
+local CloseButton = MakeControl(Controls, "×", function() Screen:Destroy() end)
+local RestoreButton = MakeControl(StripControls, "+", function() Strip.Visible = false Main.Position = Strip.Position Main.Visible = true end)
+local StripCloseButton = MakeControl(StripControls, "×", function() Screen:Destroy() end)
+
 -- Sidebar Layout Panel Assembly
 local Sidebar = Create("Frame", { Name = "Sidebar", Position = UDim2.fromOffset(0, 42), Size = UDim2.new(0, 160, 1, -42), BackgroundColor3 = Color3.fromRGB(18, 19, 23), BorderSizePixel = 0 }, Main)
 local Navigation = Create("ScrollingFrame", { Name = "Navigation", Position = UDim2.fromOffset(6, 6), Size = UDim2.new(1, -12, 1, -125), BackgroundTransparency = 1, BorderSizePixel = 0, ScrollBarThickness = 2, AutomaticCanvasSize = Enum.AutomaticSize.Y }, Sidebar)
 Create("UIListLayout", { Padding = UDim.new(0, 3), SortOrder = Enum.SortOrder.LayoutOrder }, Navigation)
+
 local Content = Create("Frame", { Name = "PageContainer", Position = UDim2.fromOffset(160, 42), Size = UDim2.new(1, -160, 1, -42), BackgroundColor3 = Color3.fromRGB(12, 12, 14), BorderSizePixel = 0 }, Main) Corner(Content, 6)
+
 -- ==============================================================================
 -- 🪐 THE BRAND NEW SCRATCH BLOCK ENGINE STUDIO v5.0 (PRECISE GRID ISOLATION)
 -- ==============================================================================
 local Studio = Create("Frame", { Name = "ScratchStudio", Size = UDim2.new(1, -100, 1, -120), Position = UDim2.new(0.5, -375, 0.5, -225), BackgroundColor3 = Color3.fromRGB(14, 15, 18), BorderSizePixel = 0, Visible = false }, Screen)
 Corner(Studio, 12); Border(Studio, Color3.fromRGB(55, 58, 68))
+
 local StudioHeader = Create("Frame", { Size = UDim2.new(1, 0, 0, 45), BackgroundColor3 = Color3.fromRGB(24, 26, 32), BorderSizePixel = 0 }, Studio) Corner(StudioHeader, 12)
 local StudioTitle = Create("TextLabel", { Text = "   🧩 | JinxKing Visual Block Studio Engine v5.0", Size = UDim2.new(0.7, 0, 1, 0), TextColor3 = Color3.fromRGB(245, 245, 250), TextSize = 12, Font = Enum.Font.RobotoMono, BackgroundTransparency = 1, TextXAlignment = Enum.TextXAlignment.Left }, StudioHeader)
 local StudioCloseBox = Create("Frame", { Size = UDim2.fromOffset(26, 28), Position = UDim2.new(1, -38, 0, 8), BackgroundColor3 = Color3.fromRGB(32, 26, 26) }, StudioHeader) Corner(StudioCloseBox, 4); Border(StudioCloseBox, Color3.fromRGB(235, 60, 60))
@@ -317,7 +361,8 @@ Accent.Visible = true
 if Pages[name] then Pages[name].Visible = true end
 if name == "Scratch" then Studio.Visible = true Main.Visible = false Accent.Visible = false btn.TextColor3 = Color3.fromRGB(150, 150, 150) end
 end)
-btn.Parent = Navigation tabButtons[name] = btn
+btn.Parent = Navigation
+tabButtons[name] = btn
 return btn
 end
 local pPlayer = Create("ScrollingFrame", { Size = UDim2.new(1, 0, 1, 0), BackgroundTransparency = 1, BorderSizePixel = 0, Visible = false }, Content) Pages["Player"] = pPlayer
